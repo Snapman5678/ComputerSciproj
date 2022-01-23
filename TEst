@@ -1,1 +1,28 @@
-Test
+import tkinter as tk
+from tkinter import ttk
+
+root = tk.Tk()
+root.title("COVID-care")
+e = ttk.Entry(root,width=45)
+e.grid(row=0,column=0,columnspan=12,padx=10,pady=10)
+#For taking you to vaccine side effects
+def sideeffect_link ():
+    print("Loading")
+
+button_vaccine = ttk.Button(root,text="Vaccine side effects",command=sideeffect_link )
+button_vaccine.grid(row=5,column=6)
+
+def covidrules_link ():
+    print("Loading")
+button_rules = ttk.Button(root , text="Covid rules" , command=covidrules_link )
+button_rules.grid(row=5 , column=10)
+
+def covidnumberdisplay():
+    number=""
+
+labelnumber= ttk.Label(root,text=covidnumberdisplay()).grid(row=0,column=12)
+
+
+
+root.configure(background="black")
+root.mainloop()
