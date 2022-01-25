@@ -49,7 +49,7 @@ def bar():
     mainnext()
 
 
-progress.place(relx=0.5, rely=0.8, anchor=CENTER)
+progress.place(relx=0.5, rely=0.98, anchor=CENTER)
 Button(root, text = 'For your health click here', command = bar).place(relx=0.5, rely=0.1, anchor=CENTER)
 
 root.mainloop()
