@@ -26,3 +26,14 @@ new_vaccines = new[1:len(new)-1]
 
 print(f"Total number of vaccinations registered : {vaccine_stats[0][3]}")
 print(f"{new_vaccines} vaccinations registered today!")
+
+deaths = []
+
+death_table = soup.find('li', class_ = 'bg-red').text
+
+deaths.append(death_table.split())
+
+new1 = deaths[0][2]
+inc = new1[1:len(new1)-1]
+
+print(f"Death count: {deaths[0][1]}\nDeath increase: {inc}")
