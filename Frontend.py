@@ -79,32 +79,6 @@ def all_cases():
 cases = all_cases()
 
 
-# statewise data
-
-def statewise():
-    s1 = []
-    state_final = [['STATE','TOTAL CASES', 'ACTIVE','CURED','DEATHS']]
-    html_text = requests.get('https://prsindia.org/covid-19/cases').text
-    soup = BeautifulSoup(html_text, 'html.parser')
-    table = soup.find('table', class_='table table-striped table-bordered')
-    body = table.find('tbody')
-    state_names = body.find_all('td')
-    for i in state_names:
-        a = i.text
-        s1.append(a)
-    i = 0
-    state = []
-    for j in s1:
-        if i < 6:
-            state.append(j)
-            i = i + 1
-        elif i == 6:
-            state_final.append(state)
-            state = []
-            state.append(j)
-            i = 0
-
-    return state_final
 
 
 # Labels for data
