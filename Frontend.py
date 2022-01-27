@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+from tkinter import ttk
 import requests
 from bs4 import BeautifulSoup
 
@@ -9,11 +10,9 @@ root.geometry('600x700')
 root.configure(background='#5d8a82')
 
 # entry for state name
-label_state = Label(root, text="Enter State").place(relx=0.4, rely=0.1, anchor=CENTER)
-input_state = Entry(root, width=30).place(relx=0.6, rely=0.1, anchor=CENTER)
 
 html_text = requests.get('https://www.mohfw.gov.in/').text
-soup = BeautifulSoup(html_text, 'lxml')
+soup = BeautifulSoup(html_text, 'html.parser')
 
 
 # finding active cases
@@ -71,7 +70,7 @@ currentdeath, newdeath = covid_deaths()
 
 def all_cases():
     html_text = requests.get('https://www.mygov.in/covid-19').text
-    soup = BeautifulSoup(html_text, 'lxml')
+    soup = BeautifulSoup(html_text, 'html.parser')
     block = soup.find('div', class_='iblock t_case')
     count = block.find('span', class_='icount').text
     return count
@@ -84,9 +83,9 @@ cases = all_cases()
 
 def statewise():
     s1 = []
-    state_final = []
+    state_final = [['STATE','TOTAL CASES', 'ACTIVE','CURED','DEATHS']]
     html_text = requests.get('https://prsindia.org/covid-19/cases').text
-    soup = BeautifulSoup(html_text, 'lxml')
+    soup = BeautifulSoup(html_text, 'html.parser')
     table = soup.find('table', class_='table table-striped table-bordered')
     body = table.find('tbody')
     state_names = body.find_all('td')
@@ -105,17 +104,8 @@ def statewise():
             state.append(j)
             i = 0
 
-    name = input_state
-    for i in range(len(state_final)):
-        if state_final[i][1] == name:
-            sconfirmed = state_final[i][2]
-            sactive = state_final[i][3]
-            scured = state_final[i][4]
-            sdeaths = state_final[i][5]
-    return sconfirmed, sactive, scured, sdeaths
+    return state_final
 
-
-state_confirmed, state_active, state_cured, state_deaths = statewise()
 
 # Labels for data
 label_activedisplay = Label(root, text="Active Cases").place(relx=0.4, rely=0.2, anchor=CENTER)
@@ -136,16 +126,5 @@ label_ndeath = Label(root, text=newdeath).place(relx=0.8, rely=0.4, anchor=CENTE
 # all cases
 label_allcases = Label(root, text="Cases").place(relx=0.4, rely=0.5, anchor=CENTER)
 label_state = Label(root, text=cases).place(relx=0.6, rely=0.5, anchor=CENTER)
-
-# state
-label_statetitle = Label(root, text="State information").place(relx=0.5, rely=0.6, anchor=CENTER)
-label_sconfirm = Label(root, text="Confirmed Cases").place(relx=0.2, rely=0.7, anchor=CENTER)
-label_sconfirmdis = Label(root, text=state_confirmed).place(relx=0.4, rely=0.7, anchor=CENTER)
-label_sactive = Label(root, text="Active Cases").place(relx=0.6, rely=0.7, anchor=CENTER)
-label_sactivedisplay = Label(root, text=state_active).place(relx=0.8, rely=0.7, anchor=CENTER)
-label_scured = Label(root, text="Cured Cases").place(relx=0.2, rely=0.8, anchor=CENTER)
-label_scureddisplay = Label(root, text=state_cured).place(relx=0.4, rely=0.8, anchor=CENTER)
-label_sdeaths = Label(root, text="Deaths").place(relx=0.6, rely=0.8, anchor=CENTER)
-label_sdeathdis = Label(root, text=state_deaths).place(relx=0.8, rely=0.8, anchor=CENTER)
 
 root.mainloop()
