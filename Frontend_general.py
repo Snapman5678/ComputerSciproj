@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter as tk
 from tkinter.ttk import *
 import requests
 from bs4 import BeautifulSoup
@@ -17,13 +17,15 @@ for title in head.find_all('a'):
 
 
 
-root = Tk()
+root = tk.Tk()
 root.geometry('600x700')
 root.title('COVID-Care')
-root.configure(background='#5d8a82')
+root.configure(background='black')
 
-my_listbox = Listbox(root, width = 55, height = 60, font = ('Times', 18))
-my_listbox.pack(pady = 100)
+label_title = tk.Label(root, text="TOP WORLD HEADLINES", font = ('helvetica', 40,'bold'), bg = 'black', fg = 'white').pack(pady = 15)
+
+my_listbox = tk.Listbox(root, width = 55, height = 60, font = ('Times', 20), bg = 'aqua', fg = 'black', justify= 'center')
+my_listbox.pack(pady = 40,fill = 'both', expand = 1)
 i = 0
 j = 1
 for news in titles[1::]:
