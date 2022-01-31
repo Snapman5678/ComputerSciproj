@@ -1,10 +1,11 @@
-from tkinter import *
+from tkinter import * 
+import tkinter as tk
 from tkinter.ttk import *
 from tkinter import ttk
 import requests
 from bs4 import BeautifulSoup
 
-root = Tk()
+root = tk.Tk()
 root.title("COVID-care")
 root.geometry('600x700')
 root.configure(background='#5d8a82')
@@ -78,27 +79,20 @@ def all_cases():
 
 cases = all_cases()
 
-
-
-
+label_title = tk.Label(root, text="INDIA CORONAVIRUS STATS", font = ('helvetica', 40,'bold'), bg = '#5d8a82', fg = 'white').pack(pady = 40)
 # Labels for data
-label_activedisplay = Label(root, text="Active Cases").place(relx=0.4, rely=0.2, anchor=CENTER)
-label_active = Label(root, text=active).place(relx=0.6, rely=0.2, anchor=CENTER)
-
+label_activedisplay = tk.Label(root, text="Active Cases: "+str(active), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
 # label for vaccine count
-label_vaccinedisplay = Label(root, text="Current vaccinations").place(relx=0.2, rely=0.3, anchor=CENTER)
-label_vaccine = Label(root, text=current).place(relx=0.4, rely=0.3, anchor=CENTER)
-label_newvacdisplay = Label(root, text="New vaccinations").place(relx=0.6, rely=0.3, anchor=CENTER)
-lebel_newvac = Label(root, text=new).place(relx=0.8, rely=0.3, anchor=CENTER)
+label_vaccinedisplay = tk.Label(root, text="Current vaccinations: "+str(current), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+label_newvacdisplay = tk.Label(root, text="New vaccinations: "+str(new), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
 
 # label for deaths
-label_curdeath = Label(root, text="Current deaths").place(relx=0.2, rely=0.4, anchor=CENTER)
-label_deaths = Label(root, text=currentdeath).place(relx=0.4, rely=0.4, anchor=CENTER)
-label_newdeath = Label(root, text="New deaths").place(relx=0.6, rely=0.4, anchor=CENTER)
-label_ndeath = Label(root, text=newdeath).place(relx=0.8, rely=0.4, anchor=CENTER)
+label_curdeath = tk.Label(root, text="Current deaths: "+str(currentdeath), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+label_newdeath = tk.Label(root, text="New deaths: "+str(newdeath), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
 
 # all cases
-label_allcases = Label(root, text="Cases").place(relx=0.4, rely=0.5, anchor=CENTER)
-label_state = Label(root, text=cases).place(relx=0.6, rely=0.5, anchor=CENTER)
+label_allcases = tk.Label(root, text="Total Cases: "+str(cases), font = ('Helvetica', 25), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+
+
 
 root.mainloop()
