@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 root = tk.Tk()
 root.title("COVID-care")
 root.geometry('600x700')
-root.configure(background='#5d8a82')
+root.configure(background='black')
 
 # entry for state name
 
@@ -79,19 +79,19 @@ def all_cases():
 
 cases = all_cases()
 
-label_title = tk.Label(root, text="INDIA CORONAVIRUS STATS", font = ('helvetica', 40,'bold'), bg = '#5d8a82', fg = 'white').pack(pady = 40)
+label_title = tk.Label(root, text="INDIA CORONAVIRUS STATS", font = ('helvetica', 40,'bold'), bg = 'black', fg = 'white').pack(pady = 40)
 # Labels for data
-label_activedisplay = tk.Label(root, text="Active Cases: "+str(active), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+label_activedisplay = tk.Label(root, text="Active Cases: "+str(active), font = ('Helvetica', 20, 'bold'), fg = 'blue', bg = 'white', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
 # label for vaccine count
-label_vaccinedisplay = tk.Label(root, text="Current vaccinations: "+str(current), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
-label_newvacdisplay = tk.Label(root, text="New vaccinations: "+str(new), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+label_vaccinedisplay = tk.Label(root, text="Current vaccinations: "+str(current), font = ('Helvetica', 20, 'bold'), fg = 'green', bg = 'white', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+label_newvacdisplay = tk.Label(root, text="New vaccinations: "+str(new), font = ('Helvetica', 20, 'bold'), fg = 'green', bg = 'white', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
 
 # label for deaths
-label_curdeath = tk.Label(root, text="Current deaths: "+str(currentdeath), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
-label_newdeath = tk.Label(root, text="New deaths: "+str(newdeath), font = ('Helvetica', 20), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+label_curdeath = tk.Label(root, text="Current deaths: "+str(currentdeath), font = ('Helvetica', 20, 'bold'), fg = 'red', bg = 'white', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+label_newdeath = tk.Label(root, text="New deaths: "+str(newdeath), font = ('Helvetica', 20, 'bold'), fg = 'red', bg = 'white', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
 
 # all cases
-label_allcases = tk.Label(root, text="Total Cases: "+str(cases), font = ('Helvetica', 25), bg = 'white', fg = 'black', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
+label_allcases = tk.Label(root, text="Total Cases: "+str(cases), font = ('Helvetica', 25, 'bold'), fg = 'green', bg = 'white', width = '30', borderwidth= 2, relief= 'raised').pack(pady = 15)
 
 
 
