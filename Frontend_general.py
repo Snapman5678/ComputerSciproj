@@ -24,7 +24,7 @@ root.configure(background='black')
 
 label_title = tk.Label(root, text="TOP WORLD HEADLINES", font = ('helvetica', 40,'bold'), bg = 'black', fg = 'white').pack(pady = 15)
 
-my_listbox = tk.Listbox(root, width = 55, height = 60, font = ('Times', 20), bg = 'aqua', fg = 'black', justify= 'center')
+my_listbox = tk.Listbox(root, width = 55, height = 60, font = ('Times', 20), bg = 'aqua', fg = 'black', justify= 'left')
 my_listbox.pack(pady = 40,fill = 'both', expand = 1)
 i = 0
 j = 1
@@ -37,4 +37,3 @@ for news in titles[1::]:
 
 root.mainloop()
 
-print(titles)
