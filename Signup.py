@@ -34,11 +34,19 @@ def adduser():
             if i[1] == usr.lower():
                 err1 = tk.Label(root, text = "Username already in use", fg = 'red')
                 err1.place(x = 200, y = 250)
+                break
             else:
                 st1 = f'INSERT INTO USERS VALUES({len(res)},"{usr}","{passw}",{vacc}, {boos});'
                 g1 = tk.Label(root, text = "Success!", fg = 'green')
                 g1.place( x = 200, y = 250)
                 cursor.execute(st1)
+                cursor = mycon.cursor()
+                st1 = 'DROP TABLE TEMPUSER;'
+                st2 = 'CREATE TABLE TEMPUSER(Username varchar(20));'
+                st3 = f'INSERT INTO TEMPUSER VALUES("{usr}");'
+                cursor.execute(st1)
+                cursor.execute(st2)
+                cursor.execute(st3)
                 mycon.commit()
                 mycon.close()
                 start()
@@ -47,7 +55,15 @@ def adduser():
         g1 = tk.Label(root, text = "Success!", fg = 'green')
         g1.place( x = 200, y = 250)
         cursor.execute(st1)
+        cursor = mycon.cursor()
+        st1 = 'DROP TABLE TEMPUSER;'
+        st2 = 'CREATE TABLE TEMPUSER(Username varchar(20));'
+        st3 = f'INSERT INTO TEMPUSER VALUES("{usr}");'
+        cursor.execute(st1)
+        cursor.execute(st2)
+        cursor.execute(st3)
         mycon.commit()
+        mycon.close()
         start()
 
     mycon.close()
@@ -66,7 +82,7 @@ Username.place(x = 300, y = 20, width = 100)
 lblsecrow = tk.Label(root, text = "PASSWORD:", bg = 'white', fg ='black')
 lblsecrow.place(x = 50, y = 50)
 
-password = tk.Entry(root, width = 35, bg = 'white', fg ='black')
+password = tk.Entry(root, width = 35, bg = 'white', fg ='black', show = '*')
 password.place(x = 300, y = 50, width = 100)
 
 lblthrow = tk.Label(root, text = "VACCINES TAKEN:", bg = 'white', fg ='black')
