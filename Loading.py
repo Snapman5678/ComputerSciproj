@@ -72,7 +72,7 @@ Username.place(x = 150, y = 20, width = 100)
 lblsecrow = tk.Label(root, text = "Password:", bg = 'white', fg ='black')
 lblsecrow.place(x = 50, y = 50)
 
-password = tk.Entry(root, width = 35, bg = 'white', fg ='black')
+password = tk.Entry(root, width = 35, bg = 'white', fg ='black', show = '*')
 password.place(x = 150, y = 50, width = 100)
 
 submitbtn = tk.Button(root, text ="Login", command = submitact, bg = 'white')
